@@ -31,4 +31,4 @@ Charlton Athletic 0 - 0 Preston North End
 
 43 mins
 
-If a game has not kicked off yet the score and matchtimes are currently presented as N/A, this means that theya re playing today (unless game has been postponed) but the game has not started yet, this could potentially be modified to find kick off times if you desire. If you want to continuously live update the score just loop calling the main function but add a delay using a time.sleep() for example as calling an update request too frequently might cause BBC sport to reject the request.
+If a game has not kicked off yet the score and matchtimes are currently presented as N/A, this means that theya re playing today (unless game has been postponed) but the game has not started yet, this could potentially be modified to find kick off times if you desire. If you want to continuously live update the score just loop calling the main function but add a delay using a time.sleep() for example as calling an update request too frequently might cause BBC sport to reject the request. If the passed teans are not playing today the code will return two empty lists.
