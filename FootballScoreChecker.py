@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import date
 
-def main():
+def main(teamlist):
     datetoday = date.today() #get current date to add to url
     url = 'https://www.bbc.co.uk/sport/football/scores-fixtures/'+str(datetoday) #specify url of page for today
     result = requests.get(url) #get access to the page via python
@@ -19,7 +19,10 @@ def main():
     homescores = []
     awayscores = []
     #this will need updating yearly, can replace this list with any teams you are interested in following and will only get scores for those teams
-    premteamslist = ['Arsenal','AFC Bournemouth','Aston Villa','Brighton & Hove Albion','Burnley','Chelsea','Crystal Palace','Everton','Leicester City','Liverpool','Manchester City','Manchester United','Newcastle United','Norwich City','Sheffield United','Southampton','Tottenham Hotspur','Watford','West Ham United','Wolverhampton Wanderers']
+    if(teamlist=='Prem'):
+        premteamslist = ['Arsenal','AFC Bournemouth','Aston Villa','Brighton & Hove Albion','Burnley','Chelsea','Crystal Palace','Everton','Leicester City','Liverpool','Manchester City','Manchester United','Newcastle United','Norwich City','Sheffield United','Southampton','Tottenham Hotspur','Watford','West Ham United','Wolverhampton Wanderers']
+    else:
+        premteamslist = teamlist
     premhomescores = []
     premawayscores = []
     matchtimes = []
@@ -85,12 +88,15 @@ def main():
     gamestrings = [] #empty gamestring list
     for i in range(0,len(homenames)): #loop over and define score string for game then display them
         gamestrings.append(homenames[i]+' '+premhomescores[i] + ' - ' + premawayscores[i] + ' ' + awaynames[i])
-        print(gamestrings[i])
-        print(premmatchtimes[i])
-    
-    return
+  
+    return gamestrings,premmatchtimes
 
 if __name__=='__main__':
-    main()
+    #main function call, if you want all premier league scores pass argument 'Prem' else pass a list of teams such as ['Leicester City','Manchester United'] etc exactly as they appear on BBC Sport fixtures and scores
+    #not still pass in list notation even if it is a single team e.g. ['Leicester City']
+    matches,matchtimes = main('Prem')
+    for i in range(0,len(matches)):
+        print(matches[i])
+        print(matchtimes[i])
 
 
