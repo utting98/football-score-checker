@@ -81,7 +81,7 @@ def main(teamlist):
                 pass
     
     for i in range(0,len(homescores)): #loop over all appended homescores (now a full list with just 'Del' if postponed or cancelled)
-        if(premflag[i]==1): #if game was prem
+        if(premflag[i]==1): #if game was played
             premhomescores.append(homescores[i]) #append the scores
             premawayscores.append(awayscores[i])
     
